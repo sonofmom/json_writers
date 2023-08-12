@@ -1,0 +1,18 @@
+[Unit]
+Description = File Writer test service
+After = network.target
+
+[Service]
+Type = simple
+Restart = always
+RestartSec = 30
+ExecStart = /usr/bin/python3 /root/writer.py
+ExecStopPost = /bin/echo service down
+User = root
+Group = root
+LimitNOFILE = infinity
+LimitNPROC = infinity
+LimitMEMLOCK = infinity
+
+[Install]
+WantedBy = multi-user.target
